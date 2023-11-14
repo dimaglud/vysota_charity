@@ -1,0 +1,19 @@
+<html>
+  <body>
+    <form action="http://localhost:3000/projects" method="post" enctype='multipart/form-data'>
+      <div>
+        <label for="title">Заголовок:</label>
+        <input name="title" type="text" />
+      </div>
+      <div>
+        <label for="description">Описание:</label>
+        <textarea name="description" rows="5" ></textarea>
+      </div>
+      <div>
+        <label for="description">Фото:</label>
+        <input name="file" type="file" />
+      </div>
+      <button type="submit">Отправить</button>
+    </form>
+  </body>
+</html>

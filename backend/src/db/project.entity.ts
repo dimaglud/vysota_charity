@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Image } from './image.entity';
 
 @Entity()
 export class Project {
@@ -16,4 +17,7 @@ export class Project {
 
   @Column({ default: new Date() })
   createdAt: Date;
+
+  @OneToMany(() => Image, (image) => image.project)
+  images: Image[]
 }

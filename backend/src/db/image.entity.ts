@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, TableForeignKey, ManyToOne } from 'typeorm';
+import { Project } from './project.entity';
 
 @Entity()
 export class Image {
@@ -15,4 +16,7 @@ export class Image {
     type: "text"
   })
   content: string;
+
+  @ManyToOne(() => Project, (project) => project.images)
+  project: Project;
 }
