@@ -13,7 +13,7 @@ services:
       - ./certbot/conf/:/etc/nginx/ssl/:ro
       - ./frontend/public/:/var/www/html/:ro
     networks:
-      - bp-network
+      - vc-network
 
   certbot:
     image: certbot/certbot:latest
@@ -21,7 +21,7 @@ services:
       - ./certbot/www/:/var/www/certbot/:rw
       - ./certbot/conf/:/etc/letsencrypt/:rw
     networks:
-      - bp-network
+      - vc-network
 
 #   frontend:
 #     container_name: frontend
@@ -34,61 +34,65 @@ services:
 #     volumes:
 #       - "./frontend/src:/usr/src/app/src"
 #     networks:
-#       - bp-network
+#       - vc-network
 #     command: "npm start"
-#   backend:
-#     container_name: backend
-#     build:
-#       context: ./backend
-#     restart: always
-#     env_file: .env
-#     volumes:
-#       - ./backend:/svr/app
-#       - /svr/app/node_modules
-#     networks:
-#       - bp-network
-#     ports:
-#       - "${BACKEND_PORT}:${BACKEND_PORT}"
-#     depends_on:
-#       - bp-pg-db
-#     links:
-#       - bp-pg-db
-#   bp-pg-db:
-#     image: postgres:16-alpine
-#     restart: always
-#     container_name: bp-pg-db
-#     env_file:
-#       - .env
-#     environment:
-#       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-#       POSTGRES_USER: ${POSTGRES_USER}
-#       POSTGRES_DB: ${POSTGRES_DB}
-#     ports:
-#       - "${DB_PORT}:${DB_PORT}"
-#     volumes:
-#       - pgdata:/var/lib/postgresql/data
-#     networks:
-#       - bp-network
-#   pgadmin-portal:
-#     image: dpage/pgadmin4
-#     restart: always
-#     container_name: pgadmin-portal
-#     env_file:
-#       - .env
-#     environment:
-#       PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
-#       PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
-#     volumes:
-#       - pgadmin:/root/.pgadmin
-#     ports:
-#       - "${PGADMIN_PORT}:80"
-#     depends_on:
-#       - bp-pg-db
-#     networks:
-#       - bp-network
-# volumes:
-#   pgdata:
-#   pgadmin:
+
+  backend:
+    container_name: backend
+    build:
+      context: ./backend
+    restart: always
+    env_file: .env
+    volumes:
+      - ./backend:/svr/app
+      - /svr/app/node_modules
+    networks:
+      - vc-network
+    ports:
+      - "${BACKEND_PORT}:${BACKEND_PORT}"
+    depends_on:
+      - vc-pg-db
+    links:
+      - vc-pg-db
+
+  vc-pg-db:
+    image: postgres:16-alpine
+    restart: always
+    container_name: vc-pg-db
+    env_file:
+      - .env
+    environment:
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - vc-network
+
+  pgadmin-portal:
+    image: dpage/pgadmin4
+    restart: always
+    container_name: pgadmin-portal
+    env_file:
+      - .env
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
+      PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+    volumes:
+      - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - vc-pg-db
+    networks:
+      - vc-network
+
+volumes:
+  pgdata:
+  pgadmin:
 networks:
-  bp-network:
+  vc-network:
     driver: bridge

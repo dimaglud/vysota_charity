@@ -1,6 +1,6 @@
 import { Controller, Get, Param, StreamableFile } from '@nestjs/common';
 import { ImageService } from './image.service';
-import { Image } from 'src/db/image.entity';
+import { Image } from '@app/image/image.entity';
 
 @Controller("images")
 export class ImageController {

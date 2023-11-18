@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Image } from './image.entity';
+import { Image } from '../image/image.entity';
 
 @Entity()
 export class Project {

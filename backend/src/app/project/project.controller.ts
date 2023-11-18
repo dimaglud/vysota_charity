@@ -1,8 +1,8 @@
 import { Controller, Get, Post, Body, Req, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ProjectService } from './project.service';
-import { Project } from 'src/db/project.entity';
-import { ProjectDTO } from 'src/dto/project.dto';
+import { Project } from '@app/project/project.entity';
+import { ProjectDTO } from '@app/project/dto/project.dto';
 
 @Controller("projects")
 export class ProjectController {
