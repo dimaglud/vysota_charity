@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Project } from '../db/project.entity';
-import { ProjectDTO } from '../dto/project.dto';
+import { Project } from './project.entity';
+import { ProjectDTO } from './dto/project.dto';
 import { ImageService } from '../image/image.service';
 
 @Injectable()
