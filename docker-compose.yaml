@@ -23,19 +23,19 @@ services:
     networks:
       - vc-network
 
-#   frontend:
-#     container_name: frontend
-#     build:
-#       context: ./frontend
-#     restart: always
-#     env_file: .env
-#     ports:
-#       - "${FRONTEND_PORT}:${FRONTEND_PORT}"
-#     volumes:
-#       - "./frontend/src:/usr/src/app/src"
-#     networks:
-#       - vc-network
-#     command: "npm start"
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend
+    restart: always
+    env_file: .env
+    ports:
+      - "${FRONTEND_PORT}:${FRONTEND_PORT}"
+    volumes:
+      - "./frontend/src:/usr/src/app/src"
+    networks:
+      - vc-network
+    command: "npm start"
 
   backend:
     container_name: backend
