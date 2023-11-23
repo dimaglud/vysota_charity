@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <form action="/api/projects" method="post" enctype='multipart/form-data'>
+      <div>
+        <label for="title">Заголовок:</label>
+        <input name="title" type="text" />
+      </div>
+      <div>
+        <label for="description">Описание:</label>
+        <textarea name="description" rows="5" ></textarea>
+      </div>
+      <div>
+        <label for="description">Фото:</label>
+        <input name="file" type="file" />
+      </div>
+      <button type="submit">Отправить</button>
+    </form>
+  </body>
+</html>
