@@ -19,13 +19,12 @@ body {
   margin-right: 75px;
 }
 
-a {
+.menu-item a {
   color: #00817E;
   text-decoration: none;
 }
 
 header {
-  font-family: PT Sans Narrow;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
@@ -33,7 +32,6 @@ header {
 }
 
 footer {
-  font-family: PT Sans Narrow;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
