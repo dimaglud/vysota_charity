@@ -31,7 +31,7 @@ export class ImageController {
 
   @Get("content/project/:projectId")
   @UseInterceptors(FileInterceptor('file'))
-  async getProjectImageContent(@Param("id") projectId: number): Promise<StreamableFile> {
+  async getProjectImageContent(@Param("projectId") projectId: number): Promise<StreamableFile> {
     let image = await this.imageService.getMainProjectImage(projectId);
     let buffer = Buffer.from(image.content, 'base64');
     return new StreamableFile(buffer, { type: image.mimeType })
