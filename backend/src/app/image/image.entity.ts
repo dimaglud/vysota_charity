@@ -10,6 +10,9 @@ export class Image {
   name: string;
 
   @Column()
+  index: number;
+
+  @Column()
   mimeType: string;
 
   @Column({

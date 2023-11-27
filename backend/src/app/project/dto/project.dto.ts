@@ -5,7 +5,7 @@ export class ProjectDTO {
 
   description: string;
 
-  isEnded: boolean;
+  isActive: string;
 
   createdAt: Date;
 
