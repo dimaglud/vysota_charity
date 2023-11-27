@@ -14,7 +14,7 @@ export class ProjectService {
   ) {}
 
   getProjects(isActive: boolean = null): Promise<Project[]> {
-    if (isActive == null)
+    if (isActive === null)
       return this.projectsRepository.find({ order: { createdAt: "DESC" } });
     else
       return this.projectsRepository.find({ 
@@ -33,10 +33,11 @@ export class ProjectService {
     let entity = new Project();
     entity.title = project.title;
     entity.description = project.description;
+    entity.isActive = project.isActive == 'on';
     entity.createdAt = new Date();
 
     let savedProject = await this.projectsRepository.save(entity);
 
-    await this.imageService.createImage(file, savedProject);
+    await this.imageService.createImage(file, savedProject.id);
   }
 }

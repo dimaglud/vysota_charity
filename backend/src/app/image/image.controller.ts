@@ -6,13 +6,14 @@ import { ProjectService } from '@app/project/project.service';
 
 @Controller("images")
 export class ImageController {
-  constructor(private readonly imageService: ImageService, private readonly projectService: ProjectService ) {}
+  constructor(private readonly imageService: ImageService
+  //  , private readonly projectService: ProjectService 
+  ) {}
 
   @Post("/project/:projectId")
   @UseInterceptors(FileInterceptor('file'))
   async createImage(@Param() projectId: number, @UploadedFile() file: Express.Multer.File) {
-    const project = await this.projectService.getProject(projectId);
-    await this.imageService.createImage(file, project);
+    await this.imageService.createImage(file, projectId);
   }
 
   @Get("project/:projectId")

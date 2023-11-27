@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
-    <form action="/api/projects" method="post" enctype='multipart/form-data'>
+    <form action="http://localhost:4000/projects" method="post" enctype='multipart/form-data'>
       <div>
         <label for="title">Заголовок:</label>
         <input name="title" type="text" />
@@ -14,6 +14,10 @@
       <div>
         <label for="description">Описание:</label>
         <textarea name="description" rows="5" ></textarea>
+      </div>
+      <div>
+        <label for="isActive">Активный:</label>
+        <input name="isActive" type="checkbox" ></textarea>
       </div>
       <div>
         <label for="description">Фото:</label>

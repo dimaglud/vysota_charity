@@ -34,11 +34,11 @@ export class ImageService {
     return this.imagesRepository.find();
   }
 
-  async createImage(file: Express.Multer.File, project: Project, index: number = null): Promise<Image> {
+  async createImage(file: Express.Multer.File, projectId: number, index: number = null): Promise<Image> {
     if (index === null) {
       const image = await this.imagesRepository.findOne({ 
         where: { 
-          project: { id: project.id } 
+          project: { id: projectId } 
         },
         order: {
           index: "DESC"
@@ -53,6 +53,10 @@ export class ImageService {
     entity.name = file.originalname;
     entity.index = index;
     entity.mimeType = file.mimetype;
+
+
+    const project = new Project();
+    project.id = projectId;
     entity.project = project;
 
     return this.imagesRepository.save(entity);

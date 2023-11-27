@@ -103,7 +103,8 @@ img .logo {
 }
 
 .container {
-
+  max-width: 1290px;
+  margin: auto;
 }
 
 .video {
@@ -126,6 +127,10 @@ img .logo {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+}
+
+.width-full {
+  width: 100%;
 }
 
 .width-third {
