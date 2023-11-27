@@ -15,19 +15,36 @@ body {
   font-style: normal;
   line-height: normal;
   color: #4E4E4E;
+  margin-left: 75px;
+  margin-right: 75px;
 }
 
-a {
-  color: #4E4E4E;
+.menu-item a {
+  color: #00817E;
   text-decoration: none;
 }
 
 header {
-  font-family: PT Sans Narrow;
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+}
+
+footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.page-footer-menu {
+  align-items: top;
+}
+
+.page-footer-menu div {
+  width: 200px;
 }
 
 img .logo {
@@ -56,6 +73,35 @@ img .logo {
 .menu .menu-item.active {
   color: #FFF;
   background: #FCAF17;
+}
+
+
+.article-item-h1 {
+  color: #00817E;
+  font-size: 22px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.article-item-h2 {
+  color: #4E4E4E;
+  font-family: PT Sans Narrow;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.33px; 
+}
+
+.article-item-h3 {
+color: #4E4E4E;
+font-family: PT Sans Narrow;
+font-size: 19px;
+font-style: normal;
+font-weight: 400;
+line-height: normal; 
+padding-top: 5px;
+padding-left: 16px;
 }
 
 .lang {
@@ -101,6 +147,14 @@ img .logo {
   font-weight: 700;
   letter-spacing: 1.53px;
 }
+
+.article {
+  margin: 40px auto;
+  font-size: 21px;
+  font-weight: 400;
+  letter-spacing: 0.53px;
+}
+
 
 .container {
 
