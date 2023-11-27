@@ -5,7 +5,7 @@ export class Init1700304716835 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-              name: 'Project',
+              name: 'project',
               columns: [
                 {
                   name: 'id',
@@ -40,7 +40,7 @@ export class Init1700304716835 implements MigrationInterface {
 
           await queryRunner.createTable(
             new Table({
-              name: 'Image',
+              name: 'image',
               columns: [
                 {
                   name: 'id',
@@ -75,7 +75,7 @@ export class Init1700304716835 implements MigrationInterface {
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        queryRunner.query(`DROP TABLE "Project"`);
-        queryRunner.query(`DROP TABLE "Image"`);
+        queryRunner.query(`DROP TABLE "project"`);
+        queryRunner.query(`DROP TABLE "image"`);
     }
 }
