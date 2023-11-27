@@ -25,5 +25,21 @@
       </div>
       <button type="submit">Отправить</button>
     </form>
+
+    <br/>
+    <br/>
+    <br/>
+
+    <form action="http://localhost:4000/images/project" method="post" enctype='multipart/form-data'>
+      <div>
+        <label for="title">ID проекта:</label>
+        <input name="projectId" type="text" />
+      </div>
+      <div>
+        <label for="description">Фото:</label>
+        <input name="file" type="file" />
+      </div>
+      <button type="submit">Добавить фото</button>
+    </form>
   </body>
 </html>

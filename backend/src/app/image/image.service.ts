@@ -15,6 +15,22 @@ export class ImageService {
     return this.imagesRepository.find();
   }
       
+  async getProjectImages(projectId: number): Promise<Image[]> {
+    return this.imagesRepository.find({
+      where: { 
+        project: { id: projectId }
+      },
+      select: {
+        id: true,
+        index: true,
+        name: true
+      },
+      order: {
+        index: "ASC"
+      }
+    });
+  }
+      
   async getImage(id: number): Promise<Image> {
     return await this.imagesRepository.findOneBy({ id });
   }

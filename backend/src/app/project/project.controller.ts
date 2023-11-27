@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Query, UseInterceptors, UploadedFile } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Query, UseInterceptors, UploadedFile } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ProjectService } from './project.service';
 import { Project } from '@app/project/project.entity';
@@ -12,6 +12,12 @@ export class ProjectController {
   async getProjects(@Query("isActive") isActive: string = null): Promise<Project[]> {
     const projects = await this.projectService.getProjects(isActive == "true");
     return projects;
+  }
+
+  @Get(":id")
+  async getProject(@Param("id") id: number): Promise<Project> {
+    const project = await this.projectService.getProject(id);
+    return project;
   }
 
   @Post()
