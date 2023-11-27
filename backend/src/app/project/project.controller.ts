@@ -9,8 +9,8 @@ export class ProjectController {
   constructor(private readonly projectService: ProjectService) {}
 
   @Get()
-  async getProjects(): Promise<Project[]> {
-    return await this.projectService.getProjects();
+  async getProjects(@Req() isActive: boolean = null): Promise<Project[]> {
+    return await this.projectService.getProjects(isActive);
   }
 
   @Post()

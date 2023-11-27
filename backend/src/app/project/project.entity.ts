@@ -13,7 +13,7 @@ export class Project {
   description: string;
 
   @Column({ default: false })
-  isEnded: boolean;
+  isActive: boolean;
 
   @Column({ default: new Date() })
   createdAt: Date;

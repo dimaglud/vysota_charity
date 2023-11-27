@@ -59,6 +59,7 @@ services:
       - .env
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_HOST_AUTH_METHOD: trust
       POSTGRES_USER: ${DB_USER}
       POSTGRES_DB: ${DB_NAME}
     volumes:
@@ -75,6 +76,7 @@ services:
     environment:
       PGADMIN_DEFAULT_PASSWORD: "${PGADMIN_DEFAULT_PASSWORD}"
       PGADMIN_DEFAULT_EMAIL: "${PGADMIN_DEFAULT_EMAIL}"
+      PGADMIN_CONFIG_SERVER_MODE: "False"
     volumes:
       - pgadmin:/root/.pgadmin
     ports:

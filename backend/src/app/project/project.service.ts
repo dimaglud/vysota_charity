@@ -13,8 +13,20 @@ export class ProjectService {
     private imageService: ImageService
   ) {}
 
-  getProjects(): Promise<Project[]> {
-    return this.projectsRepository.find();
+  getProjects(isActive: boolean = null): Promise<Project[]> {
+    if (isActive == null)
+      return this.projectsRepository.find({ order: { createdAt: "DESC" } });
+    else
+      return this.projectsRepository.find({ 
+        where: { isActive: isActive },
+        order: { createdAt: "DESC" } 
+      });
+  }
+
+  getProject(id: number): Promise<Project> {
+    return this.projectsRepository.findOne({
+      where: {id}
+    });
   }
 
   async createProject(project: ProjectDTO, file: Express.Multer.File) {
