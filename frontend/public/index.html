@@ -7,37 +7,16 @@
     <link rel="stylesheet" type="text/css" href="assets/site.css" />
   </head>
 <body>
-  <header>
-    <img class="logo" src="assets/img/logo.png" />
-    <div class="menu">
-      <div class="menu-item">
-        <a href="about-ua.html">Про фонд</a></div>
-      <div class="menu-item">
-        <a href="helpto.html">Кому ми допомагаємо</a></div>
-      <div class="menu-item">Проекти</div>
-      <div class="menu-item">Партнери</div>  
-    </div>
-    <div class="lang">
-      <div class="lang-item active">UA</div>  
-      <div class="lang-item">EN</div>  
-      <div class="lang-item">DE</div>  
-    </div>
-    <div>
-      <button class="participate">
-        Долучитися
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
-          <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>
-          <path d="M10.8554 2.40342C11.9866 1.27224 13.8206 1.27224 14.9518 2.40342C16.083 3.53461 16.083 5.36863 14.9518 6.49982L8.80716 12.6444L4.71076 8.54802L10.8554 2.40342Z" fill="white"/>
-          </svg>
-      </button>
-    </div>
-  </header>
   <div class="container">
     <header>
-      <img class="logo" src="assets/img/logo.png" />
+      <a href="index.html" >
+        <img class="logo" src="assets/img/logo.png" />
+      </a>
       <div class="menu">
-        <div class="menu-item active">Про фонд</div>
-        <div class="menu-item">Кому ми допомагаємо</div>
+        <div class="menu-item">
+          <a href="about-ua.html">Про фонд</a></div>
+        <div class="menu-item">
+          <a href="helpto.html">Кому ми допомагаємо</a></div>
         <div class="menu-item">Проекти</div>
         <div class="menu-item">Партнери</div>  
       </div>
@@ -154,23 +133,10 @@
         </svg>
       </a>
     </div>
-  </div>
 
-  <div class="get-help">
-    <div>Як отримати допомогу?</div>
-    <a href="#" class="details-link">
-      ДОКЛАДНІШЕ
-      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
-        <line x1="10.8853" y1="10.4915" x2="10.8853" y2="0.491455" stroke="#D9D9D9" stroke-width="2"/>
-        <path d="M1.28662 11.1062L11.1861 1.20671" stroke="#D9D9D9" stroke-width="2"/>
-        <line x1="11.8853" y1="1.49146" x2="1.88525" y2="1.49146" stroke="#D9D9D9" stroke-width="2"/>
-      </svg>
-    </a>
-  </div>
-
-  <footer>
-    <img class="logo" src="assets/img/logo.png" />
-  
+    <footer>
+      <img class="logo" src="assets/img/logo.png" />
+    
       <div class="page-footer-menu">
         <div>ФОНД</div>
         <p>Про нас</p><br/>
@@ -194,17 +160,18 @@
           <li>contact@vysotafund.com.ua</li>
         </ul>
       </div>  
-  
-    <div>
-      <button class="participate">
-        Долучитися
-        <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
-          <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>
-          <path d="M10.8554 2.40342C11.9866 1.27224 13.8206 1.27224 14.9518 2.40342C16.083 3.53461 16.083 5.36863 14.9518 6.49982L8.80716 12.6444L4.71076 8.54802L10.8554 2.40342Z" fill="white"/>
-          </svg>
-      </button>
-    </div>
-  </footer>
+    
+      <div>
+        <button class="participate">
+          Долучитися
+          <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+            <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>
+            <path d="M10.8554 2.40342C11.9866 1.27224 13.8206 1.27224 14.9518 2.40342C16.083 3.53461 16.083 5.36863 14.9518 6.49982L8.80716 12.6444L4.71076 8.54802L10.8554 2.40342Z" fill="white"/>
+            </svg>
+        </button>
+      </div>
+    </footer>
+  </div>
 
 </body>
 
@@ -225,17 +192,17 @@
 import React, { StrictMode, useState, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 
-const API_URL = "http://localhost:4000"
-//const API_URL = "/api"
+//const API_URL = "http://localhost:4000"
+const API_URL = "/api"
 
 function ProjectRow({ project, projectClass }) {
   return (
     <div class={ projectClass }>
-      <img src={ API_URL + '/images/content/project/' + project.id} />
+      <img src={ API_URL + '/images/content/project/' + project.id } />
       <div class="project-title">{project.title}</div>
       <div class="project-description">{project.description}</div>
       <div class="project-links">
-        <a class="more-info" href="#">
+        <a class="more-info" href={"project.html?id=" + project.id}>
           Докладніше
           <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12" fill="none">
             <line x1="10.7754" y1="10.6578" x2="10.7754" y2="0.657837" stroke="#008178" stroke-width="2"/>
@@ -243,7 +210,7 @@ function ProjectRow({ project, projectClass }) {
             <line x1="11.7754" y1="1.65784" x2="1.77539" y2="1.65784" stroke="#008178" stroke-width="2"/>
           </svg>
         </a>
-        <a class="participate" href="#">
+        <a class={ project.isActive ? "participate" : "hidden" } href="#">
           Долучитися
           <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
             <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>

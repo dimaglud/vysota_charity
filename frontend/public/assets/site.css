@@ -106,6 +106,7 @@ padding-left: 16px;
 
 .lang {
   padding-bottom: 10px;
+  visibility: hidden;
 }
 
 .lang .lang-item {
@@ -161,6 +162,22 @@ padding-left: 16px;
   margin: auto;
 }
 
+.width-full {
+  width: 100%;
+}
+
+.width-third {
+  width: 31%;
+}
+
+.width-half {
+  width: 48%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
 .video {
   background: #D9D9D9;
   text-transform: uppercase;
@@ -183,18 +200,6 @@ padding-left: 16px;
   justify-content: space-between;
 }
 
-.width-full {
-  width: 100%;
-}
-
-.width-third {
-  width: 31%;
-}
-
-.width-half {
-  width: 48%;
-}
-
 .project img {
   display: block;
   width: 100%;
@@ -207,15 +212,25 @@ padding-left: 16px;
   align-items: flex-start;
   justify-content: space-between;
 }
+
 .project-small img {
   display: block;
   width: 30%;
   margin-right: 30px;
 }
 
+.project-big {
+  display: block;
+  width: 100%;
+}
+
 .past-project-main {
   width: 48%;
   flex-shrink: 0;
+}
+
+.project-big .project-title {
+  margin-bottom: 30px;
 }
 
 .project-title {

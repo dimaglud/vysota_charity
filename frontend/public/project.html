@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="assets/site.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <div class="container">
+      <header>
+        <a href="index.html" >
+          <img class="logo" src="assets/img/logo.png" />
+        </a>
+          <div class="menu">
+          <div class="menu-item">Про фонд</div>
+          <div class="menu-item">Кому ми допомагаємо</div>
+          <div class="menu-item active">Проекти</div>
+          <div class="menu-item">Партнери</div>  
+        </div>
+        <div class="lang">
+          <div class="lang-item active">UA</div>  
+          <div class="lang-item">EN</div>  
+          <div class="lang-item">DE</div>  
+        </div>
+        <div>
+          <button class="participate">
+            Долучитися
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+              <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>
+              <path d="M10.8554 2.40342C11.9866 1.27224 13.8206 1.27224 14.9518 2.40342C16.083 3.53461 16.083 5.36863 14.9518 6.49982L8.80716 12.6444L4.71076 8.54802L10.8554 2.40342Z" fill="white"/>
+              </svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="project_details"></div>
+
+    </div>
+  </body>
+  <!-- This setup is not suitable for production. -->
+  <!-- Only use it in development! -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script async src="https://ga.jspm.io/npm:es-module-shims@1.7.0/dist/es-module-shims.js"></script>
+  <script type="importmap">
+  {
+    "imports": {
+      "react": "https://esm.sh/react?dev",
+      "react-dom/client": "https://esm.sh/react-dom/client?dev",
+      "@splidejs/react-splide": "https://esm.sh/@splidejs/react-splide"
+    }
+  }
+  </script>
+  <script type="text/babel" data-type="module">
+  import React, { StrictMode, useState, useEffect } from 'react';
+  import { createRoot } from 'react-dom/client';
+  import { Splide, SplideSlide } from '@splidejs/react-splide';
+
+  //const API_URL = "http://localhost:4000"
+  const API_URL = "/api"
+
+  let ImagesCarousel = function Passed({ images }) {
+    const rows = [];
+    images.forEach((image) => {
+      rows.push(
+        <SplideSlide>
+          <img src={ API_URL + '/images/content/' + image.id } class="width-full" />
+        </SplideSlide>
+      );
+    });
+
+    return (
+      <Splide aria-label="My Favorite Images">
+        {rows}
+      </Splide>
+    );
+  }
+
+  let ProjectDetails = function Passed() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+
+    if (!id)
+      throw new Error("Invalid id");
+
+    const [project, setProject] = useState([]);
+    useEffect(() => {
+        fetch(API_URL + '/projects/' + id)
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              setProject(data);
+          })
+          .catch((err) => {
+              console.log(err.message);
+          });
+    }, []);
+
+    const [images, setImages] = useState([]);
+    useEffect(() => {
+        fetch(API_URL + '/images/project/' + id)
+          .then((response) => response.json())
+          .then((data) => {
+              console.log(data);
+              setImages(data);
+          })
+          .catch((err) => {
+              console.log(err.message);
+          });
+    }, []);
+
+    return (
+      <div class="project-big">
+        <div class="project-title">{project.title}</div>
+        <ImagesCarousel images={ images } />
+        <div class="project-description">{project.description}</div>
+        <div class="project-links">
+          <a class={ project.isActive ? "participate" : "hidden" } href="#">
+            Долучитися
+            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13" fill="none">
+              <path d="M2.6627 6.50001C1.53151 5.36882 1.53151 3.5348 2.6627 2.40361C3.79389 1.27242 5.62791 1.27242 6.7591 2.40361L12.9037 8.54821L8.8073 12.6446L2.6627 6.50001Z" fill="white"/>
+              <path d="M10.8554 2.40342C11.9866 1.27224 13.8206 1.27224 14.9518 2.40342C16.083 3.53461 16.083 5.36863 14.9518 6.49982L8.80716 12.6444L4.71076 8.54802L10.8554 2.40342Z" fill="white"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    ); 
+  }
+
+
+  const root = createRoot(document.getElementById('project_details'));
+  root.render(
+    <StrictMode>
+      <ProjectDetails />
+    </StrictMode>
+  );
+
+</script>
+</html>
