@@ -200,7 +200,7 @@ function ProjectRow({ project, projectClass }) {
     <div class={ projectClass }>
       <img src={ API_URL + '/images/content/project/' + project.id } />
       <div class="project-title">{project.title}</div>
-      <div class="project-description">{project.description}</div>
+      <div class="project-description" dangerouslySetInnerHTML={{__html: prepareParagraphs(project.description)}}></div>
       <div class="project-links">
         <a class="more-info" href={"project.html?id=" + project.id}>
           Details
@@ -304,6 +304,9 @@ let PassedProjects = function Passed() {
    return <InactiveProjectsList projects={inactiveProjects} />;
 }
 
+function prepareParagraphs(text) {
+  return text.replaceAll("\n", "<br>");
+}
 
 const currentProjects = createRoot(document.getElementById('current_projects'));
 currentProjects.render(
