@@ -82,14 +82,14 @@
     <div>
       <table class="partners-table">
         <tr>
-          <td><img src="assets/img/partners/petzl.png" /></td>
-          <td></td>
-          <td></td>
+          <td><img src="assets/img/partners/chaos.png" /></td>
+          <td><img src="assets/img/partners/hannah.png" /></td>
+          <td><img src="assets/img/partners/julbo.png" /></td>
         </tr>
         <tr>
-          <td></td>
-          <td><img src="assets/img/partners/hannah.png" /></td>
-          <td></td>
+          <td><img src="assets/img/partners/lasportiva.png" /></td>
+          <td><img src="assets/img/partners/lorpen.png" /></td>
+          <td><img src="assets/img/partners/petzl.png" /></td>
         </tr>
       </table>
     </div>
@@ -200,7 +200,7 @@ function ProjectRow({ project, projectClass }) {
     <div class={ projectClass }>
       <img src={ API_URL + '/images/content/project/' + project.id } />
       <div class="project-title">{project.title}</div>
-      <div class="project-description">{project.description}</div>
+      <div class="project-description" dangerouslySetInnerHTML={{__html: prepareParagraphs(project.description)}}></div>
       <div class="project-links">
         <a class="more-info" href={"project.html?id=" + project.id}>
           Details
@@ -304,6 +304,9 @@ let PassedProjects = function Passed() {
    return <InactiveProjectsList projects={inactiveProjects} />;
 }
 
+function prepareParagraphs(text) {
+  return text.replaceAll("\n", "<br>");
+}
 
 const currentProjects = createRoot(document.getElementById('current_projects'));
 currentProjects.render(

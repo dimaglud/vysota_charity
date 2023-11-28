@@ -153,7 +153,7 @@
       <div class="project-big">
         <div class="project-title">{project.title}</div>
         <ImagesCarousel images={ images } />
-        <div class="project-description">{project.description}</div>
+        <div class="project-description" dangerouslySetInnerHTML={{__html: prepareParagraphs(project.description)}}></div>
         <div class="project-links">
           <a class={ project.isActive ? "participate" : "hidden" } href="#">
             Долучитися
@@ -167,6 +167,9 @@
     ); 
   }
 
+  function prepareParagraphs(text) {
+    return text?.replaceAll("\n", "<br>");
+  }
 
   const root = createRoot(document.getElementById('project_details'));
   root.render(
