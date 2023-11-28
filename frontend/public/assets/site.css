@@ -1,13 +1,13 @@
 @font-face {
   font-family: "PT Sans Narrow";
   src: url(fonts/PTSansNarrow-Regular.ttf);
-  font-weight: normal;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "PT Sans Narrow";
   src: url(fonts/PTSansNarrow-Bold.ttf);
-  font-weight: 400;
+  font-weight: 700;
 }
 
 body {
@@ -33,14 +33,29 @@ header {
 
 footer {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: 50px;
   margin-bottom: 30px;
 }
 
-.page-footer-menu {
+.footer-menu-item {
   align-items: top;
+}
+
+.footer-menu-item .title {
+  font-size: 22px;
+  font-weight: 700;
+
+  margin-bottom: 20px;
+}
+
+.footer-menu-item .item {
+  color: #868686;
+  font-size: 19px;
+  font-weight: 400;
+
+  margin-bottom: 10px;
 }
 
 .page-footer-menu div {
@@ -75,6 +90,17 @@ img .logo {
   background: #FCAF17;
 }
 
+.help-section .h3 {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 0.33px;
+}
+
+.help-section .h4 {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.33px;
+}
 
 .article-item-h1 {
   color: #00817E;
@@ -185,6 +211,8 @@ padding-left: 16px;
 }
 
 .header-link {
+  visibility: hidden;
+
   float: right;
   color: #868686;
 
@@ -290,14 +318,15 @@ padding-left: 16px;
 .details-link {
   font-size: 14px;
   font-weight: 700;
-  color: #F5F6FA;
+  color: #D9D9D9;
   margin-top: 30px;
+  text-transform: uppercase;
 }
 
 .get-help {
   text-align: center;
   margin-top: 40px;
-  padding: 20px;
+  padding: 20px 0;
   width: 100%;
   font-size: 50px;
   font-weight: 700;
